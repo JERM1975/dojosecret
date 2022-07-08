@@ -1,0 +1,127 @@
+  [1m[35m (10.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (7.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateDojos (20220702193013)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "dojos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "city" varchar, "state" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220702193013"]]
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateNinjas (20220702193042)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "ninjas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar, "last_name" varchar, "dojo_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_9610a856c5"
+FOREIGN KEY ("dojo_id")
+  REFERENCES "dojos" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_ninjas_on_dojo_id" ON "ninjas" ("dojo_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220702193042"]]
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (3.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-07-02 19:30:59.640868"], ["updated_at", "2022-07-02 19:30:59.640868"]]
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDojo Create (4.3ms)[0m  [1m[32mINSERT INTO "dojos" ("name", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "CodingDojo Silicon Valley"], ["city", "Mountain View"], ["state", "CA"], ["created_at", "2022-07-02 19:31:35.052504"], ["updated_at", "2022-07-02 19:31:35.052504"]]
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDojo Create (4.1ms)[0m  [1m[32mINSERT INTO "dojos" ("name", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "CodingDojo Seattle"], ["city", "Seattle"], ["state", "WA"], ["created_at", "2022-07-02 19:31:51.581991"], ["updated_at", "2022-07-02 19:31:51.581991"]]
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDojo Create (11.1ms)[0m  [1m[32mINSERT INTO "dojos" ("name", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "CodingDojo New York"], ["city", "New York"], ["state", "NY"], ["created_at", "2022-07-02 19:32:06.113879"], ["updated_at", "2022-07-02 19:32:06.113879"]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDojo Create (4.9ms)[0m  [1m[32mINSERT INTO "dojos" ("name", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "CodingDojo Los Angeles"], ["city", nil], ["state", "CA"], ["created_at", "2022-07-02 19:32:19.440627"], ["updated_at", "2022-07-02 19:32:19.440627"]]
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDojo Load (1.3ms)[0m  [1m[34mSELECT "dojos".* FROM "dojos"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDojo Destroy (3.3ms)[0m  [1m[31mDELETE FROM "dojos" WHERE "dojos"."id" = ?[0m  [["id", 1]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDojo Destroy (4.5ms)[0m  [1m[31mDELETE FROM "dojos" WHERE "dojos"."id" = ?[0m  [["id", 2]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDojo Destroy (2.7ms)[0m  [1m[31mDELETE FROM "dojos" WHERE "dojos"."id" = ?[0m  [["id", 3]]
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDojo Destroy (2.7ms)[0m  [1m[31mDELETE FROM "dojos" WHERE "dojos"."id" = ?[0m  [["id", 4]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDojo Create (3.8ms)[0m  [1m[32mINSERT INTO "dojos" ("name", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "CodingDojo Seattle"], ["city", "Seattle"], ["state", "WA"], ["created_at", "2022-07-02 19:38:23.517197"], ["updated_at", "2022-07-02 19:38:23.517197"]]
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDojo Create (4.5ms)[0m  [1m[32mINSERT INTO "dojos" ("name", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "CodingDojo Silicon Valley"], ["city", "Mountain View"], ["state", "CA"], ["created_at", "2022-07-02 19:38:56.360043"], ["updated_at", "2022-07-02 19:38:56.360043"]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDojo Create (5.4ms)[0m  [1m[32mINSERT INTO "dojos" ("name", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "CodingDojo New York"], ["city", "New York"], ["state", "NY"], ["created_at", "2022-07-02 19:39:18.295301"], ["updated_at", "2022-07-02 19:39:18.295301"]]
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDojo Create (4.5ms)[0m  [1m[32mINSERT INTO "dojos" ("name", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "CodingDojo Los Angeles"], ["city", "Los Angeles"], ["state", nil], ["created_at", "2022-07-02 19:39:52.455546"], ["updated_at", "2022-07-02 19:39:52.455546"]]
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDojo Create (4.5ms)[0m  [1m[32mINSERT INTO "dojos" ("name", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "CodingDojo Los Angeles"], ["city", nil], ["state", "CA"], ["created_at", "2022-07-02 19:41:33.233511"], ["updated_at", "2022-07-02 19:41:33.233511"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDojo Create (4.3ms)[0m  [1m[32mINSERT INTO "dojos" ("name", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", nil], ["city", "Los Angeles"], ["state", "CA"], ["created_at", "2022-07-02 19:43:58.528952"], ["updated_at", "2022-07-02 19:43:58.528952"]]
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDojo Load (2.1ms)[0m  [1m[34mSELECT "dojos".* FROM "dojos" ORDER BY "dojos"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDojo Load (2.9ms)[0m  [1m[34mSELECT "dojos".* FROM "dojos" ORDER BY "dojos"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDojo Load (1.8ms)[0m  [1m[34mSELECT "dojos".* FROM "dojos" ORDER BY "dojos"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDojo Load (2.3ms)[0m  [1m[34mSELECT "dojos".* FROM "dojos" ORDER BY "dojos"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mDojo Load (1.5ms)[0m  [1m[34mSELECT "dojos".* FROM "dojos" ORDER BY "dojos"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mDojo Load (2.0ms)[0m  [1m[34mSELECT "dojos".* FROM "dojos" ORDER BY "dojos"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mDojo Load (2.1ms)[0m  [1m[34mSELECT "dojos".* FROM "dojos" ORDER BY "dojos"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mDojo Load (2.3ms)[0m  [1m[34mSELECT "dojos".* FROM "dojos" ORDER BY "dojos"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 2]]
+  [1m[36mDojo Load (2.3ms)[0m  [1m[34mSELECT "dojos".* FROM "dojos" ORDER BY "dojos"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 2]]
+  [1m[36mDojo Load (2.2ms)[0m  [1m[34mSELECT "dojos".* FROM "dojos" ORDER BY "dojos"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 2]]
+  [1m[36mDojo Load (1.7ms)[0m  [1m[34mSELECT "dojos".* FROM "dojos" ORDER BY "dojos"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDojo Load (2.0ms)[0m  [1m[34mSELECT "dojos".* FROM "dojos" ORDER BY "dojos"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mDojo Load (1.7ms)[0m  [1m[34mSELECT "dojos".* FROM "dojos" ORDER BY "dojos"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 2]]
+  [1m[36mDojo Load (1.1ms)[0m  [1m[34mSELECT "dojos".* FROM "dojos" ORDER BY "dojos"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mNinja Load (1.1ms)[0m  [1m[34mSELECT "ninjas"."id", "ninjas"."first_name" FROM "ninjas" WHERE "ninjas"."dojo_id" = ? ORDER BY "ninjas"."created_at" DESC[0m  [["dojo_id", 6]]
+  [1m[36mDojo Load (2.3ms)[0m  [1m[34mSELECT "dojos".* FROM "dojos" ORDER BY "dojos"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mNinja Load (1.2ms)[0m  [1m[34mSELECT "ninjas"."id", "ninjas"."first_name" FROM "ninjas" WHERE "ninjas"."dojo_id" = ? ORDER BY "ninjas"."created_at" DESC[0m  [["dojo_id", 6]]
+  [1m[36mDojo Load (2.9ms)[0m  [1m[34mSELECT "dojos".* FROM "dojos"[0m
+  [1m[36mNinja Load (1.7ms)[0m  [1m[34mSELECT "ninjas".* FROM "ninjas"[0m
+  [1m[36mDojo Load (2.6ms)[0m  [1m[34mSELECT "dojos".* FROM "dojos" ORDER BY "dojos"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDojo Load (2.2ms)[0m  [1m[34mSELECT "dojos".* FROM "dojos" ORDER BY "dojos"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[35m (5.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mDojo Load (1.1ms)[0m  [1m[34mSELECT "dojos".* FROM "dojos" ORDER BY "dojos"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mNinja Create (4.1ms)[0m  [1m[32mINSERT INTO "ninjas" ("first_name", "last_name", "dojo_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["first_name", "Michael"], ["last_name", "Smith"], ["dojo_id", 6], ["created_at", "2022-07-02 19:59:57.729858"], ["updated_at", "2022-07-02 19:59:57.729858"]]
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDojo Load (1.6ms)[0m  [1m[34mSELECT "dojos".* FROM "dojos" ORDER BY "dojos"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mNinja Create (4.2ms)[0m  [1m[32mINSERT INTO "ninjas" ("first_name", "last_name", "dojo_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["first_name", "Michelle"], ["last_name", "Smith"], ["dojo_id", 6], ["created_at", "2022-07-02 20:00:13.942370"], ["updated_at", "2022-07-02 20:00:13.942370"]]
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDojo Load (1.3ms)[0m  [1m[34mSELECT "dojos".* FROM "dojos" ORDER BY "dojos"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mNinja Create (4.1ms)[0m  [1m[32mINSERT INTO "ninjas" ("first_name", "last_name", "dojo_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["first_name", "Mitchell"], ["last_name", "Smith"], ["dojo_id", 6], ["created_at", "2022-07-02 20:00:24.773031"], ["updated_at", "2022-07-02 20:00:24.773031"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDojo Load (2.2ms)[0m  [1m[34mSELECT "dojos".* FROM "dojos" ORDER BY "dojos"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 2]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mNinja Create (5.3ms)[0m  [1m[32mINSERT INTO "ninjas" ("first_name", "last_name", "dojo_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["first_name", "Kevin"], ["last_name", "Johnson"], ["dojo_id", 7], ["created_at", "2022-07-02 20:00:33.408929"], ["updated_at", "2022-07-02 20:00:33.408929"]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDojo Load (1.5ms)[0m  [1m[34mSELECT "dojos".* FROM "dojos" ORDER BY "dojos"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 2]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mNinja Create (4.8ms)[0m  [1m[32mINSERT INTO "ninjas" ("first_name", "last_name", "dojo_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["first_name", "Kyle"], ["last_name", "Johnson"], ["dojo_id", 7], ["created_at", "2022-07-02 20:00:44.738238"], ["updated_at", "2022-07-02 20:00:44.738238"]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDojo Load (1.6ms)[0m  [1m[34mSELECT "dojos".* FROM "dojos" ORDER BY "dojos"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 2]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mNinja Create (3.9ms)[0m  [1m[32mINSERT INTO "ninjas" ("first_name", "last_name", "dojo_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["first_name", "Kurt"], ["last_name", "Johnson"], ["dojo_id", 7], ["created_at", "2022-07-02 20:00:56.021075"], ["updated_at", "2022-07-02 20:00:56.021075"]]
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDojo Load (1.6ms)[0m  [1m[34mSELECT "dojos".* FROM "dojos" ORDER BY "dojos"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mNinja Load (0.9ms)[0m  [1m[34mSELECT "ninjas".* FROM "ninjas" WHERE "ninjas"."dojo_id" = ?[0m  [["dojo_id", 5]]
+  [1m[36mDojo Load (1.3ms)[0m  [1m[34mSELECT "dojos".* FROM "dojos" ORDER BY "dojos"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mNinja Load (0.8ms)[0m  [1m[34mSELECT "ninjas".* FROM "ninjas" WHERE "ninjas"."dojo_id" = ?[0m  [["dojo_id", 6]]
+  [1m[36mDojo Load (1.1ms)[0m  [1m[34mSELECT "dojos".* FROM "dojos" ORDER BY "dojos"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 2]]
+  [1m[36mNinja Load (1.1ms)[0m  [1m[34mSELECT "ninjas".* FROM "ninjas" WHERE "ninjas"."dojo_id" = ?[0m  [["dojo_id", 7]]
+  [1m[36mDojo Load (1.3ms)[0m  [1m[34mSELECT "dojos".* FROM "dojos" ORDER BY "dojos"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mNinja Load (1.6ms)[0m  [1m[34mSELECT "ninjas"."id", "ninjas"."first_name" FROM "ninjas" WHERE "ninjas"."dojo_id" = ? ORDER BY "ninjas"."created_at" DESC[0m  [["dojo_id", 6]]
